@@ -30,8 +30,8 @@ services:
       - "5003"
     depends_on:
       - db
-  app_service:
-    image: prasadperla46/library-app:appimg
+  frontend:
+    image: prasadperla46/library-app:frontendimg
     deploy:
       replicas: 2
     ports:

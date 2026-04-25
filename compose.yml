@@ -1,0 +1,40 @@
+---
+services:
+  db:
+    image: prasadperla46/march:dbimg
+    deploy:
+      replicas: 1
+    ports:
+      - "3306:3306"
+  auth_service:
+    image: prasadperla46/march:authimg
+    deploy:
+      replicas: 1
+    ports:
+      - "5001:5001"
+    depends_on:
+      - db
+  book_service:
+    image: prasadperla46/march:bookimg
+    deploy:
+      replicas: 1
+    ports:
+      - "5002:5002"
+    depends_on:
+      - db
+  borrow_service:
+    image: prasadperla46/march:borrowimg
+    deploy:
+      replicas: 1
+    ports:
+      - "5003:5003"
+    depends_on:
+      - db
+  app_service:
+    image: prasadperla46/march:appimg
+    deploy:
+      replicas: 1
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
